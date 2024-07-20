@@ -18,10 +18,12 @@ import com.sendiko.librariestesting.navigation.AboutScreen
 import com.sendiko.librariestesting.navigation.ContentBoxScreen
 import com.sendiko.librariestesting.navigation.DashboardScreen
 import com.sendiko.librariestesting.navigation.SelectorScreen
+import com.sendiko.librariestesting.navigation.VariousTextFieldScreen
 import com.sendiko.librariestesting.selector.SelectorDemoScreen
 import com.sendiko.librariestesting.selector.SelectorDemoScreenViewModel
 import com.sendiko.librariestesting.ui.theme.LibrariesTestingTheme
-import java.nio.channels.Selector
+import com.sendiko.librariestesting.varioustextfields.VariousTextFieldScreen
+import com.sendiko.librariestesting.varioustextfields.VariousTextFieldScreenViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +63,15 @@ class MainActivity : ComponentActivity() {
                             onNavigate = {
                                 navController.navigateUp()
                             }
+                        )
+                    }
+                    composable<VariousTextFieldScreen> {
+                        val viewModel = viewModel<VariousTextFieldScreenViewModel>()
+                        val state by viewModel.state.collectAsStateWithLifecycle()
+                        VariousTextFieldScreen(
+                            onNavigate = { navController.navigateUp() },
+                            state = state,
+                            onEvent = viewModel::onEvent
                         )
                     }
                     composable<AboutScreen> {

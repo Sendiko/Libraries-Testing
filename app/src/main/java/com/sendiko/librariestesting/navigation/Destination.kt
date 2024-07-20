@@ -15,4 +15,4 @@ data object SelectorScreen
 data object AboutScreen
 
 @Serializable
-data object MultipleTextFieldScreen
+data object VariousTextFieldScreen

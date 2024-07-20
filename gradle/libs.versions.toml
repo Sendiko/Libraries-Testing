@@ -1,6 +1,5 @@
 [versions]
 agp = "8.5.0"
-contentBoxWithNotification = "1.0.0"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -9,16 +8,19 @@ espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.3"
 activityCompose = "1.9.0"
 composeBom = "2024.06.00"
-selectorComponent = "1.0.3"
 materialIconsExtended = "1.7.0-beta05"
 lifecycleViewmodelCompose = "2.8.3"
 navigationCompose = "2.8.0-beta05"
 navigationRuntimeKtx = "2.8.0-beta05"
 kotlinxSerializationJson = "1.7.1"
 
+# libraries
+selectorComponent = "1.0.3"
+contentBoxWithNotification = "1.0.0"
+variousTextField = "1.0.3"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-content-box-with-notification = { module = "com.github.Sendiko:content-box-with-notification", version.ref = "contentBoxWithNotification" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -32,12 +34,16 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-selector-component = { module = "com.github.Sendiko:selector-component", version.ref = "selectorComponent" }
 androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+# libraries
+varioustextfield = { module = "com.github.Sendiko:VariousTextField", version.ref = "variousTextField" }
+content-box-with-notification = { module = "com.github.Sendiko:content-box-with-notification", version.ref = "contentBoxWithNotification" }
+selector-component = { module = "com.github.Sendiko:selector-component", version.ref = "selectorComponent" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
