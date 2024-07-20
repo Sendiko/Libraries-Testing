@@ -1,13 +1,11 @@
 package com.sendiko.librariestesting.contentbox
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
@@ -23,9 +21,11 @@ import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sendiko.content_box_with_notification.ContentBoxWithNotification
@@ -40,6 +40,7 @@ fun ContentBoxDemoScreen(
     onEvent: (ContentBoxDemoScreenEvent) -> Unit,
     onNavigate: () -> Unit,
 ) {
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     val loadingColor = ColorOfCard(
         containerColor = if (state.isLoading) Color.Blue else Color.Transparent,
         contentColor = if (state.isLoading) Color.White else CardDefaults.cardColors().contentColor
@@ -60,6 +61,7 @@ fun ContentBoxDemoScreen(
         Scaffold(
             topBar = {
                 LargeTopAppBar(
+                    scrollBehavior = scrollBehavior,
                     title = { Text(text = "ContentBoxWithNotification") },
                     navigationIcon = {
                         IconButton(onClick = onNavigate) {
@@ -75,6 +77,7 @@ fun ContentBoxDemoScreen(
                 end = 16.dp
             )
             LazyColumn(
+                modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
                 contentPadding = padding,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {

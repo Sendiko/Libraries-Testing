@@ -12,8 +12,10 @@ import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import com.sendiko.selector_component.Selector
 
@@ -25,9 +27,12 @@ fun SelectorDemoScreen(
     onEvent: (SelectorDemoScreenEvent) -> Unit,
     onNavigate: () -> Unit
 ) {
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+
     Scaffold(
         topBar = {
             LargeTopAppBar(
+                scrollBehavior = scrollBehavior,
                 title = { Text(text = "Selector") },
                 navigationIcon = {
                     IconButton(onClick = onNavigate) {
@@ -43,6 +48,7 @@ fun SelectorDemoScreen(
             end = 16.dp
         )
         LazyColumn(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             contentPadding = padding,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {

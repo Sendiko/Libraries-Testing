@@ -17,8 +17,10 @@ import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import com.sendiko.librariestesting.varioustextfields.VariousTextFieldScreenEvent.OnPasswordToggle
 import com.sendiko.librariestesting.varioustextfields.VariousTextFieldScreenEvent.OnRoundedTextFieldTextChange
@@ -34,9 +36,12 @@ fun VariousTextFieldScreen(
     state: VariousTextFieldScreenState,
     onEvent: (VariousTextFieldScreenEvent) -> Unit
 ) {
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+
     Scaffold(
         topBar = {
             LargeTopAppBar(
+                scrollBehavior = scrollBehavior,
                 title = { Text(text = "VariousTextField") },
                 navigationIcon = {
                     IconButton(onClick = onNavigate) {
@@ -50,6 +55,7 @@ fun VariousTextFieldScreen(
         }
     ) {
         LazyColumn(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             contentPadding = it,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
