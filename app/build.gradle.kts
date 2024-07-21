@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.various.textfield)
+    implementation(libs.various.cards)
     implementation(libs.androidx.ui.text.google.fonts)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

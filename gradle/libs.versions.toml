@@ -19,6 +19,7 @@ selectorComponent = "1.0.3"
 contentBoxWithNotification = "1.0.0"
 variousTextField = "1.0.3"
 uiTextGoogleFonts = "1.6.8"
+variousCards = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,12 +41,13 @@ androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "l
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 
 # libraries
 various-textfield = { module = "com.github.Sendiko:various-textfield", version.ref = "variousTextField" }
 content-box-with-notification = { module = "com.github.Sendiko:content-box-with-notification", version.ref = "contentBoxWithNotification" }
 selector-component = { module = "com.github.Sendiko:selector-component", version.ref = "selectorComponent" }
-androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
+various-cards = { module = "com.github.Sendiko:various-cards:1.0.0", version.ref = "variousCards" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
