@@ -47,7 +47,7 @@ androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text
 various-textfield = { module = "com.github.Sendiko:various-textfield", version.ref = "variousTextField" }
 content-box-with-notification = { module = "com.github.Sendiko:content-box-with-notification", version.ref = "contentBoxWithNotification" }
 selector-component = { module = "com.github.Sendiko:selector-component", version.ref = "selectorComponent" }
-various-cards = { module = "com.github.Sendiko:various-cards:1.0.0", version.ref = "variousCards" }
+various-cards = { module = "com.github.Sendiko:various-cards", version.ref = "variousCards" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
