@@ -42,7 +42,7 @@ androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navig
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 
 # libraries
-varioustextfield = { module = "com.github.Sendiko:VariousTextField", version.ref = "variousTextField" }
+various-textfield = { module = "com.github.Sendiko:various-textfield", version.ref = "variousTextField" }
 content-box-with-notification = { module = "com.github.Sendiko:content-box-with-notification", version.ref = "contentBoxWithNotification" }
 selector-component = { module = "com.github.Sendiko:selector-component", version.ref = "selectorComponent" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
