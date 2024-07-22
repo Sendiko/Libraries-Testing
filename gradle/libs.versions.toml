@@ -13,13 +13,13 @@ lifecycleViewmodelCompose = "2.8.3"
 navigationCompose = "2.8.0-beta05"
 navigationRuntimeKtx = "2.8.0-beta05"
 kotlinxSerializationJson = "1.7.1"
+uiTextGoogleFonts = "1.6.8"
 
 # libraries
 selectorComponent = "1.0.3"
 contentBoxWithNotification = "1.0.0"
 variousTextField = "1.0.3"
-uiTextGoogleFonts = "1.6.8"
-variousCards = "1.0.0"
+variousCards = "1.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
