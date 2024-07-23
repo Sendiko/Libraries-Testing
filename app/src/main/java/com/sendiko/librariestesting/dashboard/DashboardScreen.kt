@@ -45,7 +45,7 @@ fun DashboardScreen(
         LibraryData(
             name = Name("Selector"),
             moduleName = ModuleName("com.github.Sendiko:selector-component"),
-            version = Version("1.0.2"),
+            version = Version("1.0.34"),
             destination = SelectorScreen
         ),
         LibraryData(
