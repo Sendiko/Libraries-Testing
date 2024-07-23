@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.com.google.ksp)
 }
 
 android {
@@ -65,7 +67,14 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.com.google.dagger.hilt.android)
+    implementation(libs.androidx.hilt.work)
+    implementation(libs.androidx.work.runtime)
+    implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.com.google.dagger.hilt.android.compiler)
+    ksp(libs.com.google.dagger.compiler)
     implementation(libs.content.box.with.notification)
     implementation(libs.selector.component)
     implementation(libs.various.textfield)
