@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -14,6 +15,7 @@ import com.sendiko.librariestesting.about.AboutScreen
 import com.sendiko.librariestesting.contentbox.ContentBoxDemoScreen
 import com.sendiko.librariestesting.contentbox.ContentBoxDemoScreenViewModel
 import com.sendiko.librariestesting.dashboard.DashboardScreen
+import com.sendiko.librariestesting.dashboard.DashboardScreenViewModel
 import com.sendiko.librariestesting.navigation.AboutScreen
 import com.sendiko.librariestesting.navigation.ContentBoxScreen
 import com.sendiko.librariestesting.navigation.DashboardScreen
@@ -24,7 +26,9 @@ import com.sendiko.librariestesting.selector.SelectorDemoScreenViewModel
 import com.sendiko.librariestesting.ui.theme.LibrariesTestingTheme
 import com.sendiko.librariestesting.varioustextfields.VariousTextFieldScreen
 import com.sendiko.librariestesting.varioustextfields.VariousTextFieldScreenViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +41,14 @@ class MainActivity : ComponentActivity() {
                     startDestination = DashboardScreen
                 ) {
                     composable<DashboardScreen> {
+                        val viewModel = hiltViewModel<DashboardScreenViewModel>()
+                        val state by viewModel.state.collectAsStateWithLifecycle()
                         DashboardScreen(
                             onNavigate = {
                                 navController.navigate(it)
-                            }
+                            },
+                            state = state,
+                            onEvent = viewModel::onEvent
                         )
                     }
                     composable<ContentBoxScreen> {
