@@ -2,8 +2,10 @@ package com.sendiko.librariestesting
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -12,8 +14,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.sendiko.librariestesting.about.AboutScreen
+import com.sendiko.librariestesting.about.AboutScreenViewModel
 import com.sendiko.librariestesting.contentbox.ContentBoxDemoScreen
 import com.sendiko.librariestesting.contentbox.ContentBoxDemoScreenViewModel
+import com.sendiko.librariestesting.core.preference.AppPreferenceViewModel
 import com.sendiko.librariestesting.dashboard.DashboardScreen
 import com.sendiko.librariestesting.dashboard.DashboardScreenViewModel
 import com.sendiko.librariestesting.navigation.AboutScreen
@@ -32,9 +36,17 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(lightScrim = 0, darkScrim = 0),
+        )
         setContent {
-            LibrariesTestingTheme {
+            val themeViewModel = hiltViewModel<AppPreferenceViewModel>()
+            val themeState by themeViewModel.state.collectAsStateWithLifecycle()
+            val theme = themeState.isDarkTheme
+            val themeBase = themeState.isThemeBasedSystem
+            LibrariesTestingTheme(
+                darkTheme = if (themeBase) isSystemInDarkTheme() else if (theme) true else false,
+            ) {
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
@@ -83,10 +95,14 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable<AboutScreen> {
+                        val viewModel = hiltViewModel<AboutScreenViewModel>()
+                        val state by viewModel.state.collectAsStateWithLifecycle()
                         AboutScreen(
                             onNavigate = {
                                 navController.navigateUp()
-                            }
+                            },
+                            state = state,
+                            onEvent = viewModel::onEvent
                         )
                     }
                 }
