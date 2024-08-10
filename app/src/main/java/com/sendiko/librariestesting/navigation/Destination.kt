@@ -16,3 +16,6 @@ data object AboutScreen
 
 @Serializable
 data object VariousTextFieldScreen
+
+@Serializable
+data object VariousCardScreen
