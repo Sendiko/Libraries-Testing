@@ -24,10 +24,13 @@ import com.sendiko.librariestesting.navigation.AboutScreen
 import com.sendiko.librariestesting.navigation.ContentBoxScreen
 import com.sendiko.librariestesting.navigation.DashboardScreen
 import com.sendiko.librariestesting.navigation.SelectorScreen
+import com.sendiko.librariestesting.navigation.VariousCardScreen
 import com.sendiko.librariestesting.navigation.VariousTextFieldScreen
 import com.sendiko.librariestesting.selector.SelectorDemoScreen
 import com.sendiko.librariestesting.selector.SelectorDemoScreenViewModel
 import com.sendiko.librariestesting.ui.theme.LibrariesTestingTheme
+import com.sendiko.librariestesting.variouscards.VariousCardScreen
+import com.sendiko.librariestesting.variouscards.VariousCardsViewModel
 import com.sendiko.librariestesting.varioustextfields.VariousTextFieldScreen
 import com.sendiko.librariestesting.varioustextfields.VariousTextFieldScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -103,6 +106,17 @@ class MainActivity : ComponentActivity() {
                             },
                             state = state,
                             onEvent = viewModel::onEvent
+                        )
+                    }
+                    composable<VariousCardScreen> {
+                        val viewModel = viewModel<VariousCardsViewModel>()
+                        val state by viewModel.state.collectAsStateWithLifecycle()
+                        VariousCardScreen(
+                            state = state,
+                            onEvent = viewModel::onEvent,
+                            onNavigateBack = {
+                                navController.navigateUp()
+                            }
                         )
                     }
                 }
