@@ -27,6 +27,7 @@ import com.sendiko.librariestesting.dashboard.components.Version
 import com.sendiko.librariestesting.navigation.AboutScreen
 import com.sendiko.librariestesting.navigation.ContentBoxScreen
 import com.sendiko.librariestesting.navigation.SelectorScreen
+import com.sendiko.librariestesting.navigation.VariousCardScreen
 import com.sendiko.librariestesting.navigation.VariousTextFieldScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,6 +57,12 @@ fun DashboardScreen(
                 moduleName = ModuleName( "com.github.Sendiko:various-textfield:"),
             version = Version("1.0.3"),
             destination = VariousTextFieldScreen
+        ),
+        LibraryData(
+            name = Name("Various Cards"),
+            moduleName = ModuleName( "com.github.Sendiko:various-cards:"),
+            version = Version("1.0.1"),
+            destination = VariousCardScreen
         ),
     )
     Scaffold(
