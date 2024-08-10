@@ -56,97 +56,98 @@ fun ContentBoxDemoScreen(
     ContentBoxWithNotification(
         message = state.notificationMessage,
         isLoading = state.isLoading,
-        isErrorNotification = state.isError
-    ) {
-        Scaffold(
-            topBar = {
-                LargeTopAppBar(
-                    scrollBehavior = scrollBehavior,
-                    title = { Text(text = "ContentBoxWithNotification") },
-                    navigationIcon = {
-                        IconButton(onClick = onNavigate) {
-                            Icon(imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "back")
+        isErrorNotification = state.isError,
+        content = {
+            Scaffold(
+                topBar = {
+                    LargeTopAppBar(
+                        scrollBehavior = scrollBehavior,
+                        title = { Text(text = "ContentBoxWithNotification") },
+                        navigationIcon = {
+                            IconButton(onClick = onNavigate) {
+                                Icon(imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "back")
+                            }
                         }
-                    }
-                )
-            }
-        ) {
-            val padding = PaddingValues(
-                top = it.calculateTopPadding(),
-                start = 16.dp,
-                end = 16.dp
-            )
-            LazyColumn(
-                modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-                contentPadding = padding,
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                item {
-                    Text(
-                        text = "Description",
-                        style = MaterialTheme.typography.titleMedium
                     )
-                    Text(text = "The ContentBoxWithNotification will provide a box that pops down from the top of the screen based on the current screen's state. Use the menu below to try out.")
                 }
-                item {
-                    Text(
-                        text = "Menu",
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        MenuCard(
-                            color = loadingColor,
-                            text = "Set Loading",
-                            icon = Icons.Rounded.Refresh,
-                            modifier = Modifier.weight(1f),
-                            onClick = {
-                                onEvent(ContentBoxDemoScreenEvent.OnSetLoading(!state.isLoading))
-                            }
+            ) {
+                val padding = PaddingValues(
+                    top = it.calculateTopPadding(),
+                    start = 16.dp,
+                    end = 16.dp
+                )
+                LazyColumn(
+                    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+                    contentPadding = padding,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    item {
+                        Text(
+                            text = "Description",
+                            style = MaterialTheme.typography.titleMedium
                         )
-                        MenuCard(
-                            color = errorColor,
-                            text = "Set Error",
-                            icon = Icons.Rounded.Error,
-                            modifier = Modifier.weight(1f),
-                            onClick = {
-                                onEvent(ContentBoxDemoScreenEvent.OnSetError(!state.isError))
-                            }
-                        )
+                        Text(text = "The ContentBoxWithNotification will provide a box that pops down from the top of the screen based on the current screen's state. Use the menu below to try out.")
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        MenuCard(
-                            color = notificationColor,
-                            text = "Set Message",
-                            icon = Icons.AutoMirrored.Rounded.Message,
-                            modifier = Modifier.weight(1f),
-                            onClick = {
-                                onEvent(ContentBoxDemoScreenEvent.OnSetMessage)
-                            }
+                    item {
+                        Text(
+                            text = "Menu",
+                            style = MaterialTheme.typography.titleMedium
                         )
-                        MenuCard(
-                            color = ColorOfCard(containerColor = MaterialTheme.colorScheme.surface, contentColor = MaterialTheme.colorScheme.onSurface),
-                            text = "Clear State",
-                            icon = Icons.Rounded.Clear,
-                            modifier = Modifier.weight(1f),
-                            onClick = {
-                                onEvent(ContentBoxDemoScreenEvent.ClearState)
-                            }
-                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            MenuCard(
+                                color = loadingColor,
+                                text = "Set Loading",
+                                icon = Icons.Rounded.Refresh,
+                                modifier = Modifier.weight(1f),
+                                onClick = {
+                                    onEvent(ContentBoxDemoScreenEvent.OnSetLoading(!state.isLoading))
+                                }
+                            )
+                            MenuCard(
+                                color = errorColor,
+                                text = "Set Error",
+                                icon = Icons.Rounded.Error,
+                                modifier = Modifier.weight(1f),
+                                onClick = {
+                                    onEvent(ContentBoxDemoScreenEvent.OnSetError(!state.isError))
+                                }
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            MenuCard(
+                                color = notificationColor,
+                                text = "Set Message",
+                                icon = Icons.AutoMirrored.Rounded.Message,
+                                modifier = Modifier.weight(1f),
+                                onClick = {
+                                    onEvent(ContentBoxDemoScreenEvent.OnSetMessage)
+                                }
+                            )
+                            MenuCard(
+                                color = ColorOfCard(containerColor = MaterialTheme.colorScheme.surface, contentColor = MaterialTheme.colorScheme.onSurface),
+                                text = "Clear State",
+                                icon = Icons.Rounded.Clear,
+                                modifier = Modifier.weight(1f),
+                                onClick = {
+                                    onEvent(ContentBoxDemoScreenEvent.ClearState)
+                                }
+                            )
+                        }
                     }
                 }
             }
         }
-    }
+    )
 }
 
 @Preview
